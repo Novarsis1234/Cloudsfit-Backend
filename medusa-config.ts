@@ -8,7 +8,7 @@ module.exports = defineConfig({
 
         http: {
             storeCors: process.env.STORE_CORS!,
-            adminCors: process.env.ADMIN_CORS!,
+            adminCors: `${process.env.ADMIN_CORS || "http://localhost:9000"},${process.env.MEDUSA_BACKEND_URL || "https://cloudsfit-backend.onrender.com"}`,
             authCors: process.env.AUTH_CORS!,
 
             jwtSecret: process.env.JWT_SECRET || "supersecret",
@@ -17,8 +17,9 @@ module.exports = defineConfig({
     },
 
     admin: {
-        disable: true,
-        backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
+        disable: false,
+        path: "/app",
+        backendUrl: process.env.MEDUSA_BACKEND_URL || "https://cloudsfit-backend.onrender.com",
     },
 
     modules: [

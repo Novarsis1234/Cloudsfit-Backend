@@ -16,6 +16,11 @@ module.exports = defineConfig({
         },
     },
 
+    admin: {
+        disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
+        backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
+    },
+
     modules: [
         {
             resolve: "@medusajs/medusa/auth",
@@ -32,7 +37,7 @@ module.exports = defineConfig({
                         options: {
                             clientId: process.env.GOOGLE_CLIENT_ID || "temp",
                             clientSecret: process.env.GOOGLE_CLIENT_SECRET || "temp",
-                            callbackUrl: "http://localhost:8000/auth/callback/google",
+                            callbackUrl: `${process.env.MEDUSA_BACKEND_URL || "http://localhost:9000"}/auth/google/callback`,
                         },
                     },
                 ],

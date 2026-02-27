@@ -8,7 +8,7 @@ module.exports = defineConfig({
 
         http: {
             storeCors: process.env.STORE_CORS || "http://localhost:8000,https://cloudsfit.vercel.app",
-            adminCors: process.env.ADMIN_CORS || "http://localhost:5173,http://localhost:9000,https://cloudsfit-backend.onrender.com",
+            adminCors: process.env.ADMIN_CORS || "http://localhost:5173,https://cloudsfit-backend.onrender.com",
             authCors: process.env.AUTH_CORS || "http://localhost:8000,http://localhost:5173,https://cloudsfit.vercel.app",
 
             jwtSecret: process.env.JWT_SECRET || "supersecret",
